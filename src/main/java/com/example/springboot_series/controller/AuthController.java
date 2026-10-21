@@ -22,12 +22,17 @@ public class AuthController {
     @PostMapping("/login")
     public Map<String, String> login(@RequestBody Map<String, String> request) {
 
+        System.out.println("Login endpoint reached");
+        System.out.println("Username received: " + request.get("username"));
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.get("username"),
                         request.get("password")
                 )
         );
+
+        System.out.println("Authentication successful: " + authentication.isAuthenticated());
 
         String token = jwtService.generateToken(authentication.getName());
 

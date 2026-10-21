@@ -1,18 +1,16 @@
 package com.example.springboot_series.config;
 
+import com.example.springboot_series.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -22,28 +20,6 @@ public class SpringSecurity {
     @Autowired
     @Lazy
     private JwtAuthenticationFilter jwtAuthenticationFilter;
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        PasswordEncoder passwordEncoder =
-                PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
-        // Admin user
-        UserDetails admin = User.builder()
-                .username("admin")
-                .password(passwordEncoder.encode("admin123"))
-                .roles("ADMIN")
-                .build();
-
-        // Normal user
-        UserDetails user = User.builder()
-                .username("user")
-                .password(passwordEncoder.encode("user123"))
-                .roles("USER")
-                .build();
-
-        return new InMemoryUserDetailsManager(admin, user);
-    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -82,5 +58,34 @@ public class SpringSecurity {
             AuthenticationConfiguration config) throws Exception {
 
         return config.getAuthenticationManager();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public CommandLineRunner createInitialUsers(UserService userService) {
+        return args -> {
+
+            if (!userService.userServiceExists("admin")) {
+                userService.createUser(
+                        "admin", "admin123", "ROLE_ADMIN"
+                );
+            } else {
+                userService.resetPassword("admin", "admin123");
+            }
+
+            if (!userService.userServiceExists("user")) {
+                userService.createUser(
+                        "user", "user123", "ROLE_USER"
+                );
+            }
+            System.out.println(
+                    "Admin password valid: " +
+                            userService.verifyPassword("admin", "admin123")
+            );
+        };
     }
 }
