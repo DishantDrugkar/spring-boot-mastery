@@ -1,8 +1,11 @@
 package com.example.springboot_series.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,9 +14,14 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class SpringSecurity {
+
+    @Autowired
+    @Lazy
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -42,35 +50,37 @@ public class SpringSecurity {
         http
                 .csrf(csrf -> csrf.disable())
 
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(
+                                org.springframework.security.config.http.SessionCreationPolicy.STATELESS
+                        )
+                )
                 .authorizeHttpRequests(auth -> auth
-
-                        // Anyone can access these GET endpoints
+                        .requestMatchers("/api/auth/login").permitAll()
                         .requestMatchers(
                                 "/api/employee/get",
-                                "/api/employee/get/**"
+                                          "/api/employee/get/**"
                         ).permitAll()
-
-                        // Only ADMIN can create employees
-                        .requestMatchers(
-                                "/api/employee/create"
-                        ).hasRole("ADMIN")
-
-                        // Only ADMIN can update employees
-                        .requestMatchers(
-                                "/api/employee/update/**"
-                        ).hasRole("ADMIN")
-
-                        // Only ADMIN can delete employees
-                        .requestMatchers(
-                                "/api/employee/delete/**"
-                        ).hasRole("ADMIN")
-
-                        // All other requests require authentication
+                        .requestMatchers("/api/employee/create").hasRole("ADMIN")
+                        .requestMatchers("/api/employee/update/**").hasRole("ADMIN")
+                        .requestMatchers("/api/employee/delete/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
+                .addFilterBefore(
 
-                .httpBasic(Customizer.withDefaults());
+                        jwtAuthenticationFilter,
+
+                        UsernamePasswordAuthenticationFilter.class
+
+                );
 
         return http.build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration config) throws Exception {
+
+        return config.getAuthenticationManager();
     }
 }
