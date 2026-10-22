@@ -1,0 +1,32 @@
+Phase 1: Spring Security complete karo ✅
+
+* Day 1: Access Token, Refresh Token, JWT Expiration
+* Day 2: Exception Handling — 401 vs 403
+* Day 3: CORS, @PreAuthorize aur Logout
+* Day 4: Security Testing aur best practices
+
+Phase 2: REST API ko production-ready banao
+
+* DTOs
+* Bean Validation
+* Global Exception Handling
+* JPA relationships
+* Pagination and Sorting
+* Custom queries
+
+Phase 3: Testing aur professional development
+
+* JUnit 5
+* Mockito
+* Swagger/OpenAPI
+* Logging
+* Spring Profiles
+* Environment variables
+
+Phase 4: Project complete karo
+
+* PostgreSQL configuration
+* Security review
+* GitHub README
+* Deployment
+* API testing
