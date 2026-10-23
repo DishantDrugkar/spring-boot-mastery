@@ -48,12 +48,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             String username = jwtService.extractUsername(token);
 
             // Step 3: Check whether authentication already exists
-            if (username != null &&
-                    SecurityContextHolder.getContext().getAuthentication() == null) {
+            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
                 // Step 4: Load user details
-                UserDetails user =
-                        userDetailsService.loadUserByUsername(username);
+                UserDetails user = userDetailsService.loadUserByUsername(username);
 
                 // Step 5: Validate token
                 if (jwtService.isTokenValid(token, user.getUsername())) {
@@ -66,20 +64,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     user.getAuthorities()
                             );
 
-                    authentication.setDetails(
-                            new WebAuthenticationDetailsSource()
-                                    .buildDetails(request)
-                    );
+                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                     // Step 7: Store authentication in SecurityContext
-                    SecurityContextHolder.getContext()
-                            .setAuthentication(authentication);
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             }
 
-        } catch (io.jsonwebtoken.JwtException |
-                 IllegalArgumentException e) {
-
+        } catch (io.jsonwebtoken.JwtException | IllegalArgumentException e) {
             // Invalid or expired token
             SecurityContextHolder.clearContext();
 
