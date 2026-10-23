@@ -1,0 +1,303 @@
+🚀 Complete Spring Boot Roadmap
+
+Phase 1: Spring Boot Fundamentals ✅
+
+* Spring Framework vs Spring Boot
+* Spring Boot Architecture
+* IoC Container
+* Dependency Injection (DI)
+* Spring Beans
+* Bean Lifecycle
+* Bean Scopes
+* @Component, @Service, @Repository, @Controller
+* @Autowired
+* Constructor Injection vs Setter Injection
+* @Configuration and @Bean
+* Application Properties (application.properties, application.yml)
+* Maven and pom.xml
+* Spring Boot Starters
+* Auto-Configuration
+* Embedded Tomcat
+
+Phase 2: REST API Development ✅
+
+* Client-Server Architecture
+* REST API Fundamentals
+* HTTP Methods (GET, POST, PUT, PATCH, DELETE)
+* HTTP Status Codes (200, 201, 400, 401, 403, 404, 500)
+* @RestController
+* @RequestMapping
+* @GetMapping, @PostMapping, @PutMapping, @DeleteMapping
+* @PathVariable
+* @RequestParam
+* @RequestBody
+* ResponseEntity
+* JSON Serialization and Deserialization
+* Postman API Testing
+
+Phase 3: Spring Data JPA & Hibernate ✅
+
+* JDBC vs JPA vs Hibernate
+* ORM Concepts
+* Entities and Tables
+* @Entity, @Table, @Id
+* Primary Key Generation Strategies
+* JpaRepository
+* CRUD Operations
+* findById(), save(), deleteById()
+* Derived Query Methods
+* JPQL and Native Queries
+* @Query
+* Optional
+* Entity Relationships:
+    * One-to-One
+    * One-to-Many
+    * Many-to-One
+    * Many-to-Many
+* Lazy vs Eager Loading
+* Cascade Types
+* Fetch Types
+* @Transactional
+* N+1 Query Problem
+
+Phase 4: Database Integration ✅
+
+* SQL Fundamentals
+* PostgreSQL / MySQL Integration
+* Database Configuration
+* JDBC Driver
+* Connection Pooling (HikariCP)
+* Database CRUD Operations
+* SQL Joins
+* Subqueries
+* Indexes
+* Database Constraints
+* Transactions
+* Schema Management
+* Flyway / Liquibase
+
+Phase 5: DTOs, Validation & Exception Handling
+
+* Entity vs DTO
+* Request DTOs
+* Response DTOs
+* DTO Mapping
+* @Valid
+* @NotNull
+* @NotBlank
+* @Size
+* @Email
+* @Min and @Max
+* BindingResult
+* Custom Exceptions
+* @ExceptionHandler
+* @ControllerAdvice
+* @RestControllerAdvice
+* Consistent API Error Responses
+
+Phase 6: Spring Security ✅
+
+* Authentication vs Authorization
+* Spring Security Architecture
+* SecurityFilterChain
+* Security Filters
+* UserDetails
+* UserDetailsService
+* PasswordEncoder
+* BCrypt Password Hashing
+* AuthenticationManager
+* AuthenticationProvider
+* Role-Based Authorization
+* ADMIN / USER Roles
+* requestMatchers()
+* Method-Level Security
+* @PreAuthorize
+* Custom Access Denied Handling
+* CORS Configuration
+* CSRF Protection
+
+Phase 7: JWT Authentication ✅
+
+* JWT Fundamentals
+* JWT Structure
+* Access Tokens
+* JWT Generation
+* JWT Validation
+* JWT Expiration
+* Custom JWT Authentication Filter
+* SecurityContextHolder
+* Login API
+* Registration API
+* Refresh Tokens
+* Refresh Token Persistence
+* Token Rotation
+* Logout and Token Revocation
+* Handling Expired and Invalid Tokens
+* HTTP 401 vs 403
+
+
+Phase 8: Testing
+
+* Unit Testing Fundamentals
+* JUnit 5
+* Assertions
+* Test Lifecycle
+* Mockito
+* @Mock
+* @InjectMocks
+* when() and thenReturn()
+* verify()
+* Service Layer Testing
+* Controller Testing
+* Repository Testing
+* @SpringBootTest
+* @WebMvcTest
+* MockMvc
+* Integration Testing
+* Spring Security Testing
+* JWT Authentication Testing
+* Testing 401 and 403 Responses
+* Test Database Configuration
+
+Phase 9: Production-Ready Spring Boot
+
+* Logging with SLF4J and Logback
+* Spring Boot Actuator
+* OpenAPI / Swagger Documentation
+* Health Checks
+* Pagination
+* Application Profiles
+* Environment Variables
+* Externalized Configuration
+* Secrets Management
+* Global Error Logging
+* Database Migrations
+* Performance Optimization
+* Connection Pool Tuning
+* Caching Fundamentals
+* Spring Cache
+* Redis Basics
+* API Security Best Practices
+* OAuth 2.0 Fundamentals
+* WebSocket Basics
+
+
+Phase 10: Deployment & DevOps Basics
+
+* Git and GitHub
+* Maven Build Lifecycle
+* Creating Executable JAR Files
+* Linux Command-Line Basics
+* Environment-Based Configuration
+* Docker Fundamentals
+* Dockerfile
+* Docker Compose
+* Containerizing Spring Boot Applications
+* PostgreSQL Deployment
+* Cloud Deployment
+* CI/CD Fundamentals
+* GitHub Actions Basics
+* HTTPS and Production Configuration
+
+Phase 11: Microservices
+
+* Monolith vs Microservices
+* Microservices Architecture
+* Inter-Service Communication
+* REST Client
+* RestClient / OpenFeign
+* API Gateway
+* Service Discovery
+* Centralized Configuration
+* Spring Cloud
+* Resilience4j
+* Retry and Circuit Breaker
+* Distributed Logging
+* Distributed Tracing
+* Kafka / RabbitMQ Fundamentals
+* Event-Driven Architecture
+* Distributed Transactions Basics
+
+Phase 12: Spring AI — Complete Roadmap
+
+* Spring AI Fundamentals
+    * What is Spring AI?
+    * Spring AI vs traditional Spring Boot
+    * LLM (Large Language Model) fundamentals
+    * Generative AI basics
+    * AI Model Providers: OpenAI, Google, Ollama
+    * Spring AI architecture
+* Spring AI Setup
+    * Spring AI dependencies using Maven
+    * Model provider configuration
+    * API key management
+    * application.properties
+    * Spring AI auto-configuration
+* ChatClient API
+    * ChatClient
+    * ChatClient.Builder
+    * Sending prompts to an AI model
+    * System messages and user messages
+    * Prompt templates
+    * Configuring model parameters
+    * Streaming responses
+* Prompt Engineering
+    * System prompts
+    * User prompts
+    * Context and instructions
+    * Few-shot prompting
+    * Structured prompts
+    * Output formatting
+* Structured Output
+    * Converting AI responses into Java objects
+    * Mapping responses to POJOs
+    * DTO-based AI responses
+    * Output converters
+    * Handling invalid AI responses
+* Chat Memory
+    * Stateless vs stateful conversations
+    * Conversation IDs
+    * Chat memory
+    * Maintaining conversation context
+    * Persistent chat memory
+    * PostgreSQL-based conversation storage
+* Retrieval-Augmented Generation (RAG)
+    * What is RAG?
+    * Embeddings
+    * Document loading
+    * Document chunking
+    * Vector databases
+    * Similarity search
+    * Vector stores
+    * QuestionAnswerAdvisor
+    * Connecting PostgreSQL with PGVector
+    * Building a PDF question-answering system
+* Tool Calling
+    * What is tool calling?
+    * Connecting AI with Java methods
+    * @Tool
+    * Calling existing Spring services
+    * Accessing databases through controlled application functions
+    * Integrating AI with external APIs
+* AI Integration with REST APIs
+    * Building AI-powered REST endpoints
+    * Chatbot API
+    * Streaming responses
+    * Request validation
+    * Exception handling
+    * Securing AI endpoints with Spring Security and JWT
+* Model Context Protocol (MCP)
+    * MCP fundamentals
+    * MCP clients and servers
+    * Connecting AI models to external tools
+    * Exposing Spring services through MCP
+    * MCP transport mechanisms
+* Production-Level Spring AI
+    * AI response evaluation
+    * Hallucination awareness
+    * Error handling and retries
+    * Rate limits
+    * Token usage and cost management
+    * Logging and observability
+    * Securing API keys
+    * Testing AI-powered applications

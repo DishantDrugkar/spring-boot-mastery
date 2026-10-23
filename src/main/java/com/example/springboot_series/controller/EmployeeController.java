@@ -1,7 +1,9 @@
 package com.example.springboot_series.controller;
 
-import com.example.springboot_series.entity.Employee;
+import com.example.springboot_series.dto.EmployeeRequestDTO;
+import com.example.springboot_series.dto.EmployeeResponseDTO;
 import com.example.springboot_series.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,21 +23,21 @@ public class EmployeeController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
-     public String createEmployee(@RequestBody Employee employee){
-        employeeService.createEmployee(employee);
+     public String createEmployee(@Valid @RequestBody EmployeeRequestDTO requestDTO){
+        employeeService.createEmployee(requestDTO);
         return "Employee is added";
     }
 
-    @PreAuthorize("hasRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/get")
-    List<Employee> getEmployee(){
+    public List<EmployeeResponseDTO> getEmployee() {
         return employeeService.getEmployee();
     }
 
-    @PreAuthorize("hasRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @GetMapping("/get/{id}")
-    ResponseEntity<Employee> getEmployeeById(@PathVariable UUID id){
-        Optional<Employee> employeeById = employeeService.getEmployeeById(id);
+    ResponseEntity<EmployeeResponseDTO> getEmployeeById(@PathVariable UUID id){
+        Optional<EmployeeResponseDTO> employeeById = employeeService.getEmployeeById(id);
         if(employeeById.isPresent()){
             return new ResponseEntity<>(employeeById.get(), HttpStatus.OK);
         }
@@ -44,16 +46,23 @@ public class EmployeeController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update/{id}")
-    String updateEmployee(@PathVariable UUID id, @RequestBody Employee employee){
-        employeeService.updateEmployee(id,employee);
-        return "Employee details updated !!";
+    public ResponseEntity<String> updateEmployee(@PathVariable UUID id, @Valid @RequestBody EmployeeRequestDTO requestDTO) {
+
+        boolean updated = employeeService.updateEmployee(id, requestDTO);
+        if (updated) {
+            return ResponseEntity.ok("Employee details updated successfully!");
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
-    String deleteEmployee(@PathVariable UUID id){
-        employeeService.deleteEmployee(id);
-        return "Employee Deleted !!";
+    public ResponseEntity<String> deleteEmployee(@PathVariable UUID id) {
+        boolean deleted = employeeService.deleteEmployee(id);
+        if (deleted) {
+            return ResponseEntity.ok("Employee deleted successfully!");
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }

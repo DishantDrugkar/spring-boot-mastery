@@ -1,6 +1,9 @@
 package com.example.springboot_series.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,9 +17,14 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
+    @NotBlank
+    @Size(min = 2, max = 50)
     private String name;
     private String domain;
     private String location;
+
+    @Positive
     private double salary;
 
     @OneToOne(cascade = CascadeType.ALL)
