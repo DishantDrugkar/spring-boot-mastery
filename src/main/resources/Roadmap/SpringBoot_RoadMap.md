@@ -4,20 +4,20 @@ A comprehensive, topic-wise roadmap for learning Spring Boot, Spring Security, J
 
 ## 📌 Roadmap Overview
 
-| Phase | Topic | Status |
-|---|---|---|
-| 1 | Spring Boot Fundamentals | ✅ Completed |
-| 2 | REST API Development | ✅ Completed |
-| 3 | Spring Data JPA & Hibernate | ✅ Completed |
-| 4 | Database Integration | ✅ Completed |
-| 5 | DTOs, Validation & Exception Handling | ⏳ Pending |
+| Phase | Topic | Status              |
+|---|---|---------------------|
+| 1 | Spring Boot Fundamentals | ✅ Completed         |
+| 2 | REST API Development | ✅ Completed         |
+| 3 | Spring Data JPA & Hibernate | ✅ Completed         |
+| 4 | Database Integration | ✅ Completed         |
+| 5 | DTOs, Validation & Exception Handling | ✅ Completed         |
 | 6 | Spring Security | 🔄 Mostly Completed |
 | 7 | JWT Authentication | 🔄 Mostly Completed |
-| 8 | Testing | ⏳ Pending |
-| 9 | Production-Ready Spring Boot | ⏳ Pending |
-| 10 | Deployment & DevOps Basics | ⏳ Pending |
-| 11 | Microservices | ⏳ Pending |
-| 12 | Spring AI | ⏳ Pending |
+| 8 | Testing | ⏳ Pending           |
+| 9 | Production-Ready Spring Boot | ⏳ Pending           |
+| 10 | Deployment & DevOps Basics | ⏳ Pending           |
+| 11 | Microservices | ⏳ Pending           |
+| 12 | Spring AI | ⏳ Pending           |
 
 ---
 
@@ -97,23 +97,23 @@ A comprehensive, topic-wise roadmap for learning Spring Boot, Spring Security, J
 - [x] Schema Management
 - [ ] Flyway / Liquibase
 
-# Phase 5: DTOs, Validation & Exception Handling
+# Phase 5: DTOs, Validation & Exception Handling ✅
 
-- [ ] Entity vs DTO
-- [ ] Request DTOs
-- [ ] Response DTOs
-- [ ] DTO Mapping
-- [ ] `@Valid`
-- [ ] `@NotNull`
-- [ ] `@NotBlank`
-- [ ] `@Size`
-- [ ] `@Email`
-- [ ] `@Min` and `@Max`
+- [x] Entity vs DTO
+- [x] Request DTOs
+- [x] Response DTOs
+- [x] DTO Mapping
+- [x] `@Valid`
+- [x] `@NotNull`
+- [x] `@NotBlank`
+- [x] `@Size`
+- [x] `@Email`
+- [x] `@Min` and `@Max`
 - [ ] `BindingResult`
-- [ ] Custom Exceptions
-- [ ] `@ExceptionHandler`
-- [ ] `@ControllerAdvice`
-- [ ] `@RestControllerAdvice`
+- [x] Custom Exceptions
+- [x] `@ExceptionHandler`
+- [x] `@ControllerAdvice`
+- [x] `@RestControllerAdvice`
 - [ ] Consistent API Error Responses
 
 # Phase 6: Spring Security 🔄
@@ -127,14 +127,14 @@ A comprehensive, topic-wise roadmap for learning Spring Boot, Spring Security, J
 - [x] `PasswordEncoder`
 - [x] BCrypt Password Hashing
 - [x] `AuthenticationManager`
-- [ ] `AuthenticationProvider` — deeper understanding
+- [x] `AuthenticationProvider` — deeper understanding
 - [x] Role-Based Authorization
 - [x] ADMIN / USER Roles
 - [x] `requestMatchers()`
 - [x] Method-Level Security — `@PreAuthorize`
 - [x] Custom Access Denied Handling
 - [x] CORS Configuration
-- [ ] CSRF Protection — deeper understanding
+- [x] CSRF Protection — deeper understanding
 - [ ] Security Best Practices
 
 # Phase 7: JWT Authentication 🔄
