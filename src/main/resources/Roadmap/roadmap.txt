@@ -76,7 +76,7 @@ Phase 4: Database Integration ✅
 * Schema Management
 * Flyway / Liquibase
 
-Phase 5: DTOs, Validation & Exception Handling
+Phase 5: DTOs, Validation & Exception Handling ✅
 
 * Entity vs DTO
 * Request DTOs
