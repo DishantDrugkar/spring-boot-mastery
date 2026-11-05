@@ -96,10 +96,10 @@ public class SpringSecurity {
                         "user", "user123", "ROLE_USER"
                 );
             }
-            System.out.println(
-                    "Admin password valid: " +
-                            userService.verifyPassword("admin", "admin123")
-            );
+//            System.out.println(
+//                    "Admin password valid: " +
+//                            userService.verifyPassword("admin", "admin123")
+//            );
         };
     }
 }

@@ -12,6 +12,6 @@ public interface EmployeeService {
     String createEmployee(EmployeeRequestDTO requestDTO);
     List<EmployeeResponseDTO> getEmployee();
     Optional<EmployeeResponseDTO> getEmployeeById(UUID id);
-    boolean updateEmployee(UUID id, EmployeeRequestDTO requestDTO);
+    EmployeeResponseDTO updateEmployee(UUID id, EmployeeRequestDTO requestDTO);
     boolean deleteEmployee(UUID id);
 }

@@ -1,32 +1,5 @@
-Phase 1: Spring Security complete karo ✅
+What is Redis and Why Do We Need It?
 
-* Day 1: Access Token, Refresh Token, JWT Expiration
-* Day 2: Exception Handling — 401 vs 403
-* Day 3: CORS, @PreAuthorize aur Logout
-* Day 4: Security Testing aur best practices
+Redis is an in-memory database used to store data in RAM instead of fetching it from a disk-based database every time.
 
-Phase 2: REST API ko production-ready banao
-
-* DTOs
-* Bean Validation
-* Global Exception Handling
-* JPA relationships
-* Pagination and Sorting
-* Custom queries
-
-Phase 3: Testing aur professional development
-
-* JUnit 5
-* Mockito
-* Swagger/OpenAPI
-* Logging
-* Spring Profiles
-* Environment variables
-
-Phase 4: Project complete karo
-
-* PostgreSQL configuration
-* Security review
-* GitHub README
-* Deployment
-* API testing
+Its main purpose is to make applications faster, reduce database load, and handle frequently accessed data efficiently.
