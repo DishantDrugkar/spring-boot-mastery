@@ -280,19 +280,19 @@ A comprehensive, topic-wise roadmap for learning Spring Boot, Spring Security, J
 
 ## 12.3 ChatClient API
 
-- [ ] `ChatClient`
-- [ ] `ChatClient.Builder`
-- [ ] Sending Prompts to an AI Model
-- [ ] System Messages and User Messages
+- [x] `ChatClient`
+- [x] `ChatClient.Builder`
+- [x] Sending Prompts to an AI Model
+- [x] System Messages and User Messages
 - [ ] Prompt Templates
 - [ ] Configuring Model Parameters
 - [ ] Streaming Responses
 
 ## 12.4 Prompt Engineering
 
-- [ ] System Prompts
-- [ ] User Prompts
-- [ ] Context and Instructions
+- [x] System Prompts
+- [x] User Prompts
+- [x] Context and Instructions
 - [ ] Few-Shot Prompting
 - [ ] Structured Prompts
 - [ ] Output Formatting
